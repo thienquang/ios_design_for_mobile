@@ -1,49 +1,50 @@
 import UIKit
 
 protocol SecretDetailsDelegate: class {
-    func passwordCrackingFinished()
+  func passwordCrackingFinished()
 }
 
 class SecretDetailsViewController: UIViewController {
-
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var passwordLabel: UILabel!
+  
+  @IBOutlet var activityIndicator: UIActivityIndicatorView!
+  @IBOutlet var passwordLabel: UILabel!
+  
+  weak var delegate: SecretDetailsDelegate?
+  
+  fileprivate var presenter: SecretDetailsPresenter
+  
+  init(with presenter: SecretDetailsPresenter, and delegate: SecretDetailsDelegate?) {
+    self.presenter = presenter
+    self.delegate = delegate
     
-    var spy: Spy
-    weak var delegate: SecretDetailsDelegate?
+    super.init(nibName: "SecretDetailsViewController", bundle: nil)
+  }
+  
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    init(with spy: Spy, and delegate: SecretDetailsDelegate?) {
-        self.spy = spy
-        self.delegate = delegate
-        
-        super.init(nibName: "SecretDetailsViewController", bundle: nil)
+    activityIndicator.startAnimating()
+    activityIndicator.isHidden = false
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+      self?.showPassword()
     }
+  }
+  
+  func showPassword() {
+    activityIndicator.stopAnimating()
+    activityIndicator.isHidden = true
+    passwordLabel.text = presenter.password
+  }
+  
+  @IBAction func finishedButtonTapped(_ button: UIButton) {
+    navigationController?.popViewController(animated: true)
     
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        activityIndicator.startAnimating()
-        activityIndicator.isHidden = false
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.showPassword()
-        }
-    }
-    
-    func showPassword() {
-        activityIndicator.stopAnimating()
-        activityIndicator.isHidden = true
-        passwordLabel.text = spy.password
-    }
-    
-    @IBAction func finishedButtonTapped(_ button: UIButton) {
-        navigationController?.popViewController(animated: true)
-        
-        delegate?.passwordCrackingFinished()
-    }
+    delegate?.passwordCrackingFinished()
+  }
 }
