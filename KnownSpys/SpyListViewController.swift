@@ -2,10 +2,6 @@ import UIKit
 import Toaster
 import Foundation
 
-
-
-
-
 class SpyListViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate {
   
   @IBOutlet var tableView: UITableView!

@@ -31,6 +31,11 @@
 		DDAB9CF2205962C5009367F5 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAB9CF1205962C5009367F5 /* DetailPresenter.swift */; };
 		DDAB9CF4205963F2009367F5 /* SecretDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAB9CF3205963F2009367F5 /* SecretDetailsPresenter.swift */; };
 		DDAB9CF6205965DB009367F5 /* SpyCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAB9CF5205965DB009367F5 /* SpyCellPresenter.swift */; };
+		DDAB9CF920596665009367F5 /* TranslationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAB9CF820596665009367F5 /* TranslationLayer.swift */; };
+		DDAB9CFB2059668A009367F5 /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAB9CFA2059668A009367F5 /* DataLayer.swift */; };
+		DDAB9CFD205966A4009367F5 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAB9CFC205966A4009367F5 /* NetworkLayer.swift */; };
+		DDAB9CFF205966C3009367F5 /* ModelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAB9CFE205966C3009367F5 /* ModelLayer.swift */; };
+		DDAB9D01205975FB009367F5 /* SpyTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAB9D00205975FB009367F5 /* SpyTranslator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +67,11 @@
 		DDAB9CF1205962C5009367F5 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		DDAB9CF3205963F2009367F5 /* SecretDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretDetailsPresenter.swift; sourceTree = "<group>"; };
 		DDAB9CF5205965DB009367F5 /* SpyCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyCellPresenter.swift; sourceTree = "<group>"; };
+		DDAB9CF820596665009367F5 /* TranslationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationLayer.swift; sourceTree = "<group>"; };
+		DDAB9CFA2059668A009367F5 /* DataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayer.swift; sourceTree = "<group>"; };
+		DDAB9CFC205966A4009367F5 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
+		DDAB9CFE205966C3009367F5 /* ModelLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLayer.swift; sourceTree = "<group>"; };
+		DDAB9D00205975FB009367F5 /* SpyTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyTranslator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				094CE19E1EA7FB590056B653 /* MockedWebServer */,
+				DDAB9CFC205966A4009367F5 /* NetworkLayer.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -107,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				094CE19D1EA7FB4C0056B653 /* CoreData */,
+				DDAB9CFA2059668A009367F5 /* DataLayer.swift */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -183,10 +195,12 @@
 		0993B3B21EA53F6A005C9B6F /* ModelLayer */ = {
 			isa = PBXGroup;
 			children = (
+				DDAB9CF72059664A009367F5 /* Translation */,
 				0935DCF91EA81BDD00349652 /* Enums.swift */,
 				09837DB31EA6952900F2EE12 /* DTOs */,
 				09837DB21EA6951A00F2EE12 /* Database */,
 				09837DB11EA6951500F2EE12 /* Network */,
+				DDAB9CFE205966C3009367F5 /* ModelLayer.swift */,
 			);
 			name = ModelLayer;
 			sourceTree = "<group>";
@@ -244,6 +258,15 @@
 				C195FFDF15DCC517723B1A3C /* Pods-KnownSpys.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DDAB9CF72059664A009367F5 /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				DDAB9CF820596665009367F5 /* TranslationLayer.swift */,
+				DDAB9D00205975FB009367F5 /* SpyTranslator.swift */,
+			);
+			name = Translation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,9 +404,14 @@
 				0993B3B01EA53DB6005C9B6F /* RowType.swift in Sources */,
 				0993B3AA1EA53D5A005C9B6F /* SpyListViewController.swift in Sources */,
 				093C826A1EA7E617009CBC73 /* MockedWebServer.swift in Sources */,
+				DDAB9CFD205966A4009367F5 /* NetworkLayer.swift in Sources */,
 				DDAB9CF2205962C5009367F5 /* DetailPresenter.swift in Sources */,
+				DDAB9D01205975FB009367F5 /* SpyTranslator.swift in Sources */,
+				DDAB9CFF205966C3009367F5 /* ModelLayer.swift in Sources */,
 				0993B3B51EA55130005C9B6F /* SpyCell.swift in Sources */,
 				0993B3A21EA53D3D005C9B6F /* SecretDetailsViewController.swift in Sources */,
+				DDAB9CFB2059668A009367F5 /* DataLayer.swift in Sources */,
+				DDAB9CF920596665009367F5 /* TranslationLayer.swift in Sources */,
 				DDAB9CF6205965DB009367F5 /* SpyCellPresenter.swift in Sources */,
 				DDAB9CF4205963F2009367F5 /* SecretDetailsPresenter.swift in Sources */,
 				09BE71B51EA9280C001F6D6B /* Extensions.swift in Sources */,
