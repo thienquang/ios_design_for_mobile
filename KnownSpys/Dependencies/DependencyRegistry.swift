@@ -28,9 +28,9 @@ class DependencyRegistry {
         }.inObjectScope(.container)
 
         container.register(ModelLayer.self){ r in
-            ModelLayer(dataLayer:        r.resolve(DataLayer.self)!,
-                             networkLayer:     r.resolve(NetworkLayer.self)!,
-                             translationLayer: r.resolve(TranslationLayer.self)!)
+          ModelLayer(networkLayer:     r.resolve(NetworkLayer.self)!,
+                     dataLayer:        r.resolve(DataLayer.self)!,
+                     translationLayer: r.resolve(TranslationLayer.self)!)
         }.inObjectScope(.container)
     }
     
@@ -58,7 +58,7 @@ class DependencyRegistry {
 
     //MARK: - Maker Methods
     typealias SpyCellMaker = (UITableView, IndexPath, SpyDTO) -> SpyCell
-    func makeSpyCell(for tableView: UITableView, at indexPath: IndexPath, spy: SpyDTO) -> SpyCell {
+    func makeSpyCell(for tableView: UITableView, at indexPath: IndexPath, with spy: SpyDTO) -> SpyCell {
         let presenter = container.resolve(SpyCellPresenter.self, argument: spy)!
         let cell = SpyCell.dequeue(from: tableView, for: indexPath, with: presenter)
         return cell

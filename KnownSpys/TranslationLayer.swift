@@ -12,7 +12,11 @@ import CoreData
 
 class TranslationLayer {
   
-  fileprivate var spyTranslator = SpyTranslator()
+  fileprivate var spyTranslator: SpyTranslator
+  
+  init(spyTranslator: SpyTranslator) {
+    self.spyTranslator = spyTranslator
+  }
   
   func createSpyDTOsFromJsonData(_ data: Data) -> [SpyDTO] {
     print("converting json to DTOs")

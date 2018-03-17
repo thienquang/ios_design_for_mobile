@@ -14,7 +14,11 @@ typealias VoidBlock = ()->Void
 class SpyListPresenter {
   var data = [SpyDTO]()
   
-  fileprivate var modelLayer = ModelLayer()
+  fileprivate var modelLayer: ModelLayer
+  
+  init(modelLayer: ModelLayer) {
+    self.modelLayer = modelLayer
+  }
 }
 
 //MARK: - Data Methods

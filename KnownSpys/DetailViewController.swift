@@ -9,15 +9,17 @@ class DetailViewController: UIViewController, SecretDetailsDelegate {
   @IBOutlet var genderLabel: UILabel!
   
   fileprivate var presenter: DetailPresenter!
-  
+  fileprivate var secretDetailsViewControllerMaker: DependencyRegistry.SecretDetailsViewControllerMaker!
   override func viewDidLoad() {
     super.viewDidLoad()
     
     setupView()
   }
   
-  func configure(with presenter: DetailPresenter) {
+  func configure(with presenter: DetailPresenter,
+                 secretDetailsViewControllerMaker: @escaping DependencyRegistry.SecretDetailsViewControllerMaker ) {
     self.presenter = presenter
+    self.secretDetailsViewControllerMaker = secretDetailsViewControllerMaker
   }
   
   func setupView() {
@@ -31,8 +33,8 @@ class DetailViewController: UIViewController, SecretDetailsDelegate {
 //MARK: - Touch Events
 extension DetailViewController {
   @IBAction func briefcaseTapped(_ button: UIButton) {
-    let secretDetailsPresenter = SecretDetailsPresenter(with: presenter.spy)
-    let vc = SecretDetailsViewController(with: secretDetailsPresenter, and: self as SecretDetailsDelegate)
+    
+    let vc = secretDetailsViewControllerMaker(presenter.spy, self)
     
     navigationController?.pushViewController(vc, animated: true)
   }
@@ -45,14 +47,14 @@ extension DetailViewController {
     navigationController?.popViewController(animated: true)
   }
 }
-
-//MARK: - Helper Methods
-extension DetailViewController {
-  static func fromStoryboard(with presenter: DetailPresenter) -> DetailViewController {
-    let vc = UIStoryboard.main.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-    vc.configure(with: presenter)
-    
-    return vc
-  }
-}
+//
+////MARK: - Helper Methods
+//extension DetailViewController {
+//  static func fromStoryboard(with presenter: DetailPresenter) -> DetailViewController {
+//    let vc = UIStoryboard.main.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+//    vc.configure(with: presenter)
+//    
+//    return vc
+//  }
+//}
 

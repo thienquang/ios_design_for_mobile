@@ -27,6 +27,8 @@
 		0993B3B61EA55130005C9B6F /* SpyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0993B3B41EA55130005C9B6F /* SpyCell.xib */; };
 		09BE71B51EA9280C001F6D6B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE71B41EA9280C001F6D6B /* Extensions.swift */; };
 		27D89A5AED51AACE163BC800 /* Pods_KnownSpys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD66DF8A273EBAA681C0C56 /* Pods_KnownSpys.framework */; };
+		DD31833D205D02D500CE4AA7 /* SwinjectStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31833B205D02D500CE4AA7 /* SwinjectStoryboard+Extensions.swift */; };
+		DD31833E205D02D500CE4AA7 /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31833C205D02D500CE4AA7 /* DependencyRegistry.swift */; };
 		DDAB9CF020595975009367F5 /* SpyListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAB9CEF20595975009367F5 /* SpyListPresenter.swift */; };
 		DDAB9CF2205962C5009367F5 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAB9CF1205962C5009367F5 /* DetailPresenter.swift */; };
 		DDAB9CF4205963F2009367F5 /* SecretDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAB9CF3205963F2009367F5 /* SecretDetailsPresenter.swift */; };
@@ -63,6 +65,8 @@
 		6FD66DF8A273EBAA681C0C56 /* Pods_KnownSpys.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KnownSpys.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93008DB5112BB6ECABC1A530 /* Pods-KnownSpys.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnownSpys.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KnownSpys/Pods-KnownSpys.debug.xcconfig"; sourceTree = "<group>"; };
 		C195FFDF15DCC517723B1A3C /* Pods-KnownSpys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnownSpys.release.xcconfig"; path = "Pods/Target Support Files/Pods-KnownSpys/Pods-KnownSpys.release.xcconfig"; sourceTree = "<group>"; };
+		DD31833B205D02D500CE4AA7 /* SwinjectStoryboard+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwinjectStoryboard+Extensions.swift"; sourceTree = "<group>"; };
+		DD31833C205D02D500CE4AA7 /* DependencyRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyRegistry.swift; sourceTree = "<group>"; };
 		DDAB9CEF20595975009367F5 /* SpyListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyListPresenter.swift; sourceTree = "<group>"; };
 		DDAB9CF1205962C5009367F5 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		DDAB9CF3205963F2009367F5 /* SecretDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretDetailsPresenter.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 		0993B3B21EA53F6A005C9B6F /* ModelLayer */ = {
 			isa = PBXGroup;
 			children = (
+				DD31833A205D02D500CE4AA7 /* Dependencies */,
 				DDAB9CF72059664A009367F5 /* Translation */,
 				0935DCF91EA81BDD00349652 /* Enums.swift */,
 				09837DB31EA6952900F2EE12 /* DTOs */,
@@ -258,6 +263,15 @@
 				C195FFDF15DCC517723B1A3C /* Pods-KnownSpys.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DD31833A205D02D500CE4AA7 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				DD31833B205D02D500CE4AA7 /* SwinjectStoryboard+Extensions.swift */,
+				DD31833C205D02D500CE4AA7 /* DependencyRegistry.swift */,
+			);
+			path = Dependencies;
 			sourceTree = "<group>";
 		};
 		DDAB9CF72059664A009367F5 /* Translation */ = {
@@ -407,6 +421,8 @@
 				DDAB9CFD205966A4009367F5 /* NetworkLayer.swift in Sources */,
 				DDAB9CF2205962C5009367F5 /* DetailPresenter.swift in Sources */,
 				DDAB9D01205975FB009367F5 /* SpyTranslator.swift in Sources */,
+				DD31833E205D02D500CE4AA7 /* DependencyRegistry.swift in Sources */,
+				DD31833D205D02D500CE4AA7 /* SwinjectStoryboard+Extensions.swift in Sources */,
 				DDAB9CFF205966C3009367F5 /* ModelLayer.swift in Sources */,
 				0993B3B51EA55130005C9B6F /* SpyCell.swift in Sources */,
 				0993B3A21EA53D3D005C9B6F /* SecretDetailsViewController.swift in Sources */,
