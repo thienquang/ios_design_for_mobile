@@ -1,6 +1,6 @@
 import UIKit
 
-class DetailViewController: UIViewController, SecretDetailsDelegate {
+class DetailViewController: UIViewController {
   
   
   @IBOutlet var profileImage: UIImageView!
@@ -9,17 +9,27 @@ class DetailViewController: UIViewController, SecretDetailsDelegate {
   @IBOutlet var genderLabel: UILabel!
   
   fileprivate var presenter: DetailPresenter!
-  fileprivate var secretDetailsViewControllerMaker: DependencyRegistry.SecretDetailsViewControllerMaker!
+  fileprivate weak var navigationCoordinator: NavigationCoordinator?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     setupView()
   }
   
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    if isMovingToParentViewController {
+      navigationCoordinator?.movingBack()
+    }
+  }
+
+  
   func configure(with presenter: DetailPresenter,
-                 secretDetailsViewControllerMaker: @escaping DependencyRegistry.SecretDetailsViewControllerMaker ) {
+                 navigationCoordinator: NavigationCoordinator ) {
     self.presenter = presenter
-    self.secretDetailsViewControllerMaker = secretDetailsViewControllerMaker
+    self.navigationCoordinator = navigationCoordinator
   }
   
   func setupView() {
@@ -34,19 +44,19 @@ class DetailViewController: UIViewController, SecretDetailsDelegate {
 extension DetailViewController {
   @IBAction func briefcaseTapped(_ button: UIButton) {
     
-    let vc = secretDetailsViewControllerMaker(presenter.spy, self)
+    let args = ["spy": presenter.spy]
     
-    navigationController?.pushViewController(vc, animated: true)
+    navigationCoordinator?.next(arguments: args)
   }
 }
 
-//MARK: - SecretDetailsDelegate
-extension DetailViewController {
-  func passwordCrackingFinished() {
-    //close middle layer too
-    navigationController?.popViewController(animated: true)
-  }
-}
+////MARK: - SecretDetailsDelegate
+//extension DetailViewController {
+//  func passwordCrackingFinished() {
+//    //close middle layer too
+//    navigationController?.popViewController(animated: true)
+//  }
+//}
 //
 ////MARK: - Helper Methods
 //extension DetailViewController {
