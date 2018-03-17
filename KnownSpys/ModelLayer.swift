@@ -10,7 +10,11 @@ import Foundation
 
 typealias SpiesAndSourceBlock = (Source, [SpyDTO])->Void
 
-class ModelLayer {
+protocol ModelLayer {
+  func loadData(resultsLoaded: @escaping SpiesAndSourceBlock)
+}
+
+class ModelLayerImpl: ModelLayer {
   fileprivate var networkLayer: NetworkLayer
   fileprivate var dataLayer: DataLayer
   fileprivate var translationLayer: TranslationLayer
@@ -38,7 +42,8 @@ class ModelLayer {
     }
     
     func loadFromDB(from source: Source) {
-      dataLayer.loadFromDBWith { spies in
+
+      dataLayer.loadFromDB { spies in
         let dtos = translationLayer.toSpyDTOs(from: spies)
         resultsLoaded(source, dtos)
       }

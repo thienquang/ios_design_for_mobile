@@ -11,7 +11,12 @@ import CoreData
 
 typealias SpiesBlock = ([Spy])->Void
 
-class DataLayer {
+protocol DataLayer {
+  func loadFromDB(finished: SpiesBlock)
+  func save(dtos: [SpyDTO], translationLayer: TranslationLayer, finished: @escaping () -> Void)
+}
+
+class DataLayerImpl: DataLayer{
   
   lazy var persistentContainer: NSPersistentContainer = {
     let container = NSPersistentContainer(name: "KnownSpys")
@@ -39,7 +44,7 @@ class DataLayer {
     finished()
   }
   
-  func loadFromDBWith(finished: SpiesBlock) {
+  func loadFromDB(finished: SpiesBlock) {
     print("loading data locally")
     let spies = loadSpiesFromDB()
     finished(spies)
@@ -48,7 +53,7 @@ class DataLayer {
 
 
 //MARK: - Private Data Methods
-extension DataLayer {
+extension DataLayerImpl {
   
   fileprivate func loadSpiesFromDB() -> [Spy] {
     let sortOn = NSSortDescriptor(key: "name", ascending: true)
